@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Mata Mosquito - Jogo & Ranking</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="mira">🎯</div>
+
+    <!-- TELA INICIAL -->
+
+    <div id="tela-inicial" class="painel">
+
+        <h1>Mata Mosquito</h1>
+
+        <p>
+            Elimine o máximo de mosquitos
+            antes que o tempo acabe ou
+            suas vidas esgotem!
+        </p>
+
+
+        <div class="controles-jogo">
+
+            <label for="dificuldade">
+                Dificuldade:
+            </label>
+
+            <select id="dificuldade">
+
+                <option value="1500">
+                    Normal (1.5s)
+                </option>
+
+                <option value="1000">
+                    Difícil (1s)
+                </option>
+
+                <option value="750">
+                    Chuck Norris (0.75s)
+                </option>
+
+            </select>
+
+
+            <button
+                id="btn-iniciar"
+                onclick="iniciarJogo()"
+            >
+                Iniciar Jogo
+            </button>
+
+        </div>
+
+
+        <!-- RANKING -->
+
+        <div class="secao-ranking">
+
+            <h2>🏆 Top 10 Ranking</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Posição</th>
+                        <th>Nickname</th>
+                        <th>Pontos</th>
+                        <th>Data</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="tabela-ranking">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- TELA DO JOGO -->
+
+    <div id="tela-jogo" class="hidden">
+
+        <div class="hud">
+
+            <div class="vidas">
+
+                <span id="v1" class="coracao">
+                    ❤️
+                </span>
+
+                <span id="v2" class="coracao">
+                    ❤️
+                </span>
+
+                <span id="v3" class="coracao">
+                    ❤️
+                </span>
+
+            </div>
+
+
+            <div class="cronometro">
+
+                Tempo Restante:
+                <span id="tempo">30</span>s
+
+            </div>
+
+
+            <div class="pontuacao">
+
+                Pontos:
+                <span id="pontos-atuais">0</span>
+
+            </div>
+
+        </div>
+
+
+        <div id="palco-jogo"></div>
+
+    </div>
+
+
+    <!-- GAME OVER -->
+
+    <div
+        id="modal-game-over"
+        class="modal hidden"
+    >
+
+        <div class="modal-conteudo">
+
+            <h2 id="titulo-fim">
+                Fim de Jogo!
+            </h2>
+
+
+            <p>
+                Sua pontuação final foi:
+
+                <strong id="pontos-finais">
+                    0
+                </strong>
+            </p>
+
+
+            <form
+                id="form-ranking"
+                onsubmit="salvarPontuacao(event)"
+            >
+
+                <input
+                    type="text"
+                    id="nickname"
+                    placeholder="Digite seu nickname"
+                    maxlength="50"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    id="btn-salvar"
+                >
+                    Salvar no Ranking
+                </button>
+
+            </form>
+
+
+            <button
+                onclick="reiniciarJogo()"
+                class="btn-secundario"
+            >
+                Jogar Novamente
+            </button>
+
+        </div>
+
+    </div>
+            <!-- CÂMERA -->
+        <div id="camera-container">
+            <video id="camera" autoplay playsinline></video>
+            <div id="camera-status">📷 Ativando câmera...</div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+
+        <script src="script.js"></script>
+
+</body>
+
+</html>
